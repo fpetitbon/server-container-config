@@ -3,8 +3,7 @@ services:
   nextcloud:
     image: ghcr.io/linuxserver/nextcloud
     container_name: nextcloud
-    env_files:
-      - ../base.env
+    env_files: ../base.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -16,7 +15,7 @@ services:
       - MYSQL_PASSWORD=nextcloud
     volumes:
       - /disk/appdata/nextcloud/config:/config # Remplacer /disk par le moint de montage
-      - /disk/appdata/nextcloud/data:/data     # Remplacer /disk par le moint de montage
+      - /disk/cloud/data:/data     # Remplacer /disk par le moint de montage
     depends_on:
       - nextcloud-db
     ports:
@@ -39,7 +38,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /disk/appdata/nextcloud/db:/config    # Remplacer /disk par le moint de montage
+      - /disk/cloud/db:/config    # Remplacer /disk par le moint de montage
     restart: unless-stopped
     
 
