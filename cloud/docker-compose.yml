@@ -6,9 +6,9 @@ services:
     env_files:
       - ../base.env
     environment:
-      # - PUID=${PUID}
-      # - PGID=${PGID}
-      # - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
       - NEXTCLOUD_ADMIN_USER=fred
       - MYSQL_HOST=nextcloud-db
       - MYSQL_DATABASE=nextcloud
