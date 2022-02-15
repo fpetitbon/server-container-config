@@ -22,6 +22,7 @@ services:
     networks:
       - gobieIO
     restart: unless-stopped
+  
   mariadb:
     image: ghcr.io/linuxserver/mariadb
     container_name: nextcloud-db
@@ -38,3 +39,6 @@ services:
     volumes:
       - /disk/appdata/nextcloud/db:/config    # Remplacer /disk par le moint de montage
     restart: unless-stopped
+    
+env_files:
+    - ../base.env
