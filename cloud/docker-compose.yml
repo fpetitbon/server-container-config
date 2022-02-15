@@ -3,10 +3,12 @@ services:
   nextcloud:
     image: ghcr.io/linuxserver/nextcloud
     container_name: nextcloud
+        env_files:
+        - ../base.env
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
+      # - PUID=${PUID}
+      # - PGID=${PGID}
+      # - TZ=${TZ}
       - NEXTCLOUD_ADMIN_USER=fred
       - MYSQL_HOST=nextcloud-db
       - MYSQL_DATABASE=nextcloud
@@ -40,5 +42,4 @@ services:
       - /disk/appdata/nextcloud/db:/config    # Remplacer /disk par le moint de montage
     restart: unless-stopped
     
-env_files:
-    - ../base.env
+
