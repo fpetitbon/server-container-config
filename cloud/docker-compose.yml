@@ -3,8 +3,8 @@ services:
   nextcloud:
     image: ghcr.io/linuxserver/nextcloud
     container_name: nextcloud
-        env_files:
-        - ../base.env
+    env_files:
+      - ../base.env
     environment:
       # - PUID=${PUID}
       # - PGID=${PGID}
