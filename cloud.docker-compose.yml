@@ -1,4 +1,6 @@
 version: "3.8"
+
+# nextcloud containers
 services:
 
   nextcloud:
@@ -14,6 +16,8 @@ services:
       - ${TANK}/download:/download
     depends_on:
       - nextcloud-db
+    networks:
+      - default
     ports:
       - 450:443
 
@@ -26,3 +30,5 @@ services:
       - .db.env
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
+    networks:
+      - default
