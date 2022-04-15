@@ -8,7 +8,7 @@ services:
     container_name: nextcloud
     restart: unless-stopped
     env_file:
-      - .base.env
+      - .cloud.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     env_file:
-      - .base.env
+      - .cloud.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
