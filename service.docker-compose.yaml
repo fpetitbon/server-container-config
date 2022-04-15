@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall
+    container_name: heimdall
+    restart: unless-stopped
+    volumes:
+      - ${TANK}/appdata/heimdall:/config
+
+  swag:
+    image: ghcr.io/linuxserver/swag
+    container_name: swag
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - URL=gobie.fr
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - DNSPLUGIN=ovh
+    volumes:
+      - ${TANK}/appdata/swag:/config
+    ports:
+      - 10443:443
+      - 10080:80
+
+# external networks 
+networks:
+
+  cloud:
+    external:
+      name: cloud_default
+      
+  media:
+    external:
+      name: media_default
