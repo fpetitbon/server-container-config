@@ -9,6 +9,10 @@ services:
     restart: unless-stopped
     env_file:
       - .db.env
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
       - ${TANK}/cloud:/data
@@ -28,6 +32,10 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     env_file:
       - .db.env
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
     networks:
