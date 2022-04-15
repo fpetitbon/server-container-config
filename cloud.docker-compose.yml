@@ -7,9 +7,6 @@ services:
     image: ghcr.io/linuxserver/nextcloud
     container_name: nextcloud
     restart: unless-stopped
-    env_file:
-      - .env
-      - .env.cloud
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -31,8 +28,6 @@ services:
     container_name: nextcloud-db
     restart: unless-stopped
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
-    env_file:
-      - .env.cloud
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
