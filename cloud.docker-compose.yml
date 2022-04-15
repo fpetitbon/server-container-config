@@ -21,6 +21,7 @@ services:
     image: ghcr.io/linuxserver/mariadb
     container_name: nextcloud-db
     restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     env_file:
       - .db.env
     volumes:
