@@ -15,7 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - URL=gobie.fr
+      - URL=${URL]
       - SUBDOMAINS=wildcard
       - VALIDATION=dns
       - DNSPLUGIN=ovh
