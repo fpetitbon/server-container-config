@@ -9,7 +9,6 @@ services:
     restart: unless-stopped
     env_file:
       - .base.env
-      - .cloud.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -33,7 +32,6 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     env_file:
       - .base.env
-      - .cloud.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
