@@ -15,10 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - URL=gobie.fr
-      - SUBDOMAINS=wildcard
-      - VALIDATION=dns
-      - DNSPLUGIN=ovh
+      - URL=${URL}
     volumes:
       - ${TANK}/appdata/swag:/config
     ports:
