@@ -7,9 +7,6 @@ services:
     restart: unless-stopped
     env_file:
       - .db.env
-    environment:
-      - NEXTCLOUD_ADMIN_USER=admin
-      - MYSQL_HOST=nextcloud-db
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
       - ${TANK}/cloud:/data
