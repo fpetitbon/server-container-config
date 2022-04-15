@@ -38,4 +38,4 @@ services:
 networks:
   front:
     external: true
-    name: "FRONT_PROXY"
+    name: "${FRONT_NET}"
