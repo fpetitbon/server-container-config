@@ -9,7 +9,9 @@ services:
       - .db.env
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
-      - ${TANK}/appdata/nextcloud/data:/data
+      - ${TANK}/cloud:/data
+      - ${TANK}/media:/media
+      - ${TANK}/download:/download
     depends_on:
       - nextcloud-db
     ports:
