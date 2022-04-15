@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+
+  nextcloud:
+    image: ghcr.io/linuxserver/nextcloud
+    container_name: nextcloud
+    restart: unless-stopped
+    env_file:
+      - db.env
+    volumes:
+      - ${TANK}/appdata/nextcloud/config:/config
+      - ${TANK}/appdata/nextcloud/data:/data
+    depends_on:
+      - nextcloud-db
+    ports:
+      - 450:443
+
+  mariadb:
+    image: ghcr.io/linuxserver/mariadb
+    container_name: nextcloud-db
+    restart: unless-stopped
+    env_file:
+      - db.env
+    volumes:
+      - ${TANK}/appdata/nextcloud/db:/config
