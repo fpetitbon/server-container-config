@@ -45,4 +45,4 @@ services:
 networks:
   front:
     external: true
-    name: "${FRONT_PROXY_NET}"
+    name: "${PROXY_NET}"
