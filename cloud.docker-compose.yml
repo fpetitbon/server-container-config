@@ -6,7 +6,7 @@ services:
     container_name: nextcloud
     restart: unless-stopped
     env_file:
-      - db.env
+      - .db.env
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
       - ${TANK}/appdata/nextcloud/data:/data
@@ -20,6 +20,6 @@ services:
     container_name: nextcloud-db
     restart: unless-stopped
     env_file:
-      - db.env
+      - .db.env
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
