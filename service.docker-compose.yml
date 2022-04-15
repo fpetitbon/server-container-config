@@ -15,7 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - URL=${URL}
+      - URL=${HOSTNAME}
     volumes:
       - ${TANK}/appdata/swag:/config
     ports:
