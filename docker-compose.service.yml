@@ -22,8 +22,9 @@ services:
       - 10443:443
       - 10080:80
 
-# external networks 
 networks:
+  front:
+    name: "${FRONT_NET}"
 
   cloud:
     external:
