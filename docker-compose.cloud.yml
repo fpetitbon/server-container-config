@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 # Nextcloud containers
 services:
@@ -11,6 +11,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - REDIS_HOST=nextcloud-redis
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
       - ${TANK}/cloud:/data
@@ -18,11 +19,12 @@ services:
       - ${TANK}/download:/download
     depends_on:
       - nextcloud-db
+      - nextcloud-redis
     networks:
       - front
     ports:
       - 450:443
-
+    
   mariadb:
     image: ghcr.io/linuxserver/mariadb
     container_name: nextcloud-db
@@ -34,6 +36,11 @@ services:
       - TZ=${TZ}
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
+      
+  redis:
+    image: redis:latest
+    container_name: nextcloud-redis
+    restart: unless-stopped
    
 networks:
   front:
