@@ -35,7 +35,6 @@ services:
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
    
-# External networks 
 networks:
   front:
     name: "${FRONT_NET}"
