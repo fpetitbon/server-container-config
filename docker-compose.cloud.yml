@@ -38,5 +38,4 @@ services:
 # External networks 
 networks:
   front:
-    external: true
     name: "${FRONT_NET}"
