@@ -1,6 +1,6 @@
 version: "3.8"
 
-# nextcloud containers
+# Nextcloud containers
 services:
 
   nextcloud:
@@ -34,7 +34,8 @@ services:
       - TZ=${TZ}
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
-      
+   
+# External networks 
 networks:
   front:
     external: true
