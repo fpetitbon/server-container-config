@@ -1,6 +1,7 @@
-version: "3.8"
+version: "3.9"
 services:
 
+  # Mainboard
   heimdall:
     image: ghcr.io/linuxserver/heimdall
     container_name: heimdall
@@ -8,6 +9,7 @@ services:
     volumes:
       - ${TANK}/appdata/heimdall:/config
 
+  # Reverse proxy
   swag:
     image: ghcr.io/linuxserver/swag
     container_name: swag
