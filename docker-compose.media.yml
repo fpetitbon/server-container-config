@@ -10,7 +10,7 @@ services:
     environment:
       # - JELLYFIN_PublishedServerUrl=192.168.0.101 #optional
     networks:
-      - lsio
+      - front
     volumes:
       - ${TANK}/appdata/jellyfin:/config
       - ${TANK}/media:/data/media
@@ -81,5 +81,8 @@ services:
 
     # ports:
     #  - 9117:9117
-
     
+networks:
+  front:
+    external:
+      name: proxy
