@@ -24,12 +24,4 @@ services:
 
 networks:
   front:
-    name: "${FRONT_NET}"
-
-  cloud:
-    external:
-      name: cloud_default
-      
-  media:
-    external:
-      name: media_default
+    name: proxy
