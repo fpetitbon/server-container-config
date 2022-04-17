@@ -44,4 +44,5 @@ services:
    
 networks:
   front:
-    name: "${FRONT_NET}"
+    external:
+      name: proxy
