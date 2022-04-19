@@ -9,11 +9,11 @@ services:
       - /dev/vchiq:/dev/vchiq
     environment:
       # - JELLYFIN_PublishedServerUrl=192.168.0.101 #optional
-    networks:
-      - front
     volumes:
       - ${TANK}/appdata/jellyfin:/config
       - ${TANK}/media:/data/media
+    networks:
+      - front
     # ports:
     # - 8096:8096
   
@@ -26,6 +26,8 @@ services:
     volumes:
       - ${TANK}/appdata/deluge:/config
       - ${TANK}/download:/data/download
+    networks:
+      - front
     ports:
     #  - 8112:8112
       - 6881:6881
@@ -41,6 +43,8 @@ services:
       - ${TANK}/appdata/sonarr:/config
       - ${TANK}/media/videos/series:/data/series
       - ${TANK}/download:/data/download
+    networks:
+      - front
     # ports:
     #  - 8989:8989
  
@@ -67,6 +71,8 @@ services:
       - ${TANK}/appdata/lidarr:/config
       - ${TANK}/media/musiques:/data/musiques
       - ${TANK}/download:/data/download
+    networks:
+      - front
     #ports:
     #  - 8686:8686
 
@@ -78,7 +84,8 @@ services:
       - AUTO_UPDATE=true
     volumes:
       - ${TANK}/appdata/jackett:/config
-
+    networks:
+      - front
     # ports:
     #  - 9117:9117
     
