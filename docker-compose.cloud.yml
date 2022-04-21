@@ -1,6 +1,8 @@
 version: "3.8"
 
 volumes:
+  cloud:
+    name: ${TANK}/cloud
   media:
     external: true
   download:
@@ -25,7 +27,7 @@ services:
       - REDIS_HOST=nextcloud-redis
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
-      - ${TANK}/cloud:/data
+      - cloud:/data
       - media:/media
       - download:/download
     depends_on:
