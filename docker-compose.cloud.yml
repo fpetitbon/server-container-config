@@ -49,5 +49,5 @@ services:
    
 networks:
   front:
-    external:
-      name: proxy
+    name: proxy
+    external: true
