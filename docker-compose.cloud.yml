@@ -11,9 +11,6 @@ services:
       - .env.base
       - .env.cloud
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
       - REDIS_HOST=nextcloud-redis
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
@@ -36,10 +33,6 @@ services:
     env_file:
       - .env.base
       - .env.cloud
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
     volumes:
       - ${TANK}/appdata/nextcloud/db:/config
       
