@@ -1,5 +1,16 @@
 version: "3.8"
 
+volumes:
+  media:
+    external: true
+  download:
+    external: true
+    
+networks:
+  front:
+    name: proxy
+    external: true    
+
 # Nextcloud containers
 services:
 
@@ -15,8 +26,8 @@ services:
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
       - ${TANK}/cloud:/data
-      - ${TANK}/media:/media
-      - ${TANK}/download:/download
+      - media:/media
+      - download:/download
     depends_on:
       - nextcloud-db
       - nextcloud-redis
@@ -40,8 +51,3 @@ services:
     image: redis:latest
     container_name: nextcloud-redis
     restart: unless-stopped
-   
-networks:
-  front:
-    name: proxy
-    external: true
