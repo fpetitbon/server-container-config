@@ -20,6 +20,8 @@ services:
       - URL=${DOMAIN}
     volumes:
       - ${TANK}/appdata/swag:/config
+    networks:
+      - front
     ports:
       - 10443:443
       
