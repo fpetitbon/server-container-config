@@ -32,3 +32,5 @@ services:
     restart: unless-stopped
     volumes:
       - ${TANK}/appdata/heimdall:/config
+    networks:
+      - front
