@@ -13,6 +13,9 @@ services:
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
+    env_file:
+      - .env.base
+      - .env.proxy
     environment:
       - URL=${DOMAIN}
     volumes:
