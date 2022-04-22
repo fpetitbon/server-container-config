@@ -184,6 +184,41 @@ TZ=Europe/Paris
 
 - Récuperer et remplacer le point de montage `${TANK}`.
 
+
+## Services
+
+### Swag
+
+Reverse Proxy
+
+Creation pour tous les sous domaines (wildcard)
+
+```
+version: "3.8"
+services:
+  swag:
+    image: ghcr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=998  # Change UID si besoin
+      - PGID=100  # Change GID si besoin
+      - TZ=Europe/Paris
+      - URL=gobie.fr
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - EMAIL=admin@gobie.fr
+    volumes:
+      - /disk/appdata/swag:/config    # Remplacer /disk par le moint de montage
+    ports:
+      - 10443:443
+      - 10080:80
+    networks:
+      - gobieIO
+    restart: unless-stopped
+```
+
 ## Cloud
 
 - Editer une stack <b>cloud</b> avec le fichier docker-compose suivant.
@@ -271,43 +306,7 @@ usermod -aG video jellyfin
 exit
 ```
 
-<hr>
-
-## Services
-
-### Swag
-
-Reverse Proxy
-
-Creation pour tous les sous domaines.
-
-```
-version: "3.8"
-services:
-  swag:
-    image: ghcr.io/linuxserver/swag
-    container_name: swag
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=998  # Change UID si besoin
-      - PGID=100  # Change GID si besoin
-      - TZ=Europe/Paris
-      - URL=gobie.fr
-      - SUBDOMAINS=wildcard
-      - VALIDATION=dns
-      - EMAIL=admin@gobie.fr
-    volumes:
-      - /disk/appdata/swag:/config    # Remplacer /disk par le moint de montage
-    ports:
-      - 10443:443
-      - 10080:80
-    networks:
-      - gobieIO
-    restart: unless-stopped
-```
-
-Le reverse proxy, 
+<hr> 
 
 
 
