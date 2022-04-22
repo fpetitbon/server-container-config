@@ -1,6 +1,7 @@
 version: "3.8"
 
 networks:
+  default:
   front:
     name: proxy
 
@@ -32,5 +33,3 @@ services:
     restart: unless-stopped
     volumes:
       - ${TANK}/appdata/heimdall:/config
-    networks:
-      - front
