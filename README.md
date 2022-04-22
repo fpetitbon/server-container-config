@@ -7,7 +7,7 @@ Le systeme est un raspberry PI 4
 - Télécharger l'image depuis: https://www.raspberrypi.org/software/
 - Enregistrer l'image sur une carte SD puis démarer le raspberry.
 
-> A ce stade il faut un écran et un clavier pour ce connecté au raspebrry.
+> A ce stade il faut un écran et un clavier pour se connecter au raspebrry.
 
 ```
 login: pi
@@ -172,12 +172,11 @@ Le repertoire `appdata` contient les fichiers de configuration de chaques conten
 
 Le fichiers si dessous contient les varaibles d'environement communes à tous les conteneurs.
 
-.base.env
+.env.base
 ```
 PUID_admin=998             
 PGID_admin=100              
 TZ=Europe/Paris
-TANK=
 ```
 - Recuperer le PUID et le PGID de l'utilisateur docker (admin) via la command `id admin` et mettre a jour si besoin
 
