@@ -1,7 +1,6 @@
 version: "3.8"
 
 networks:
-  default:
   front:
     name: proxy
 
@@ -22,6 +21,7 @@ services:
     volumes:
       - ${TANK}/appdata/swag:/config
     networks:
+      - default
       - front
     ports:
       - 10443:443
