@@ -182,8 +182,7 @@ TZ=Europe/Paris
 
   > La commande `cat /etc/passwd` permet d'afficher la liste des utilisateurs avec PUID et GUID
 
-- Récuperer et remplacer le point de montage `${TANK}`.
-
+- Récuperer le point de montage
 
 ## Services
 
@@ -193,31 +192,21 @@ Reverse Proxy
 
 Creation pour tous les sous domaines (wildcard)
 
-```
-version: "3.8"
-services:
-  swag:
-    image: ghcr.io/linuxserver/swag
-    container_name: swag
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=998  # Change UID si besoin
-      - PGID=100  # Change GID si besoin
-      - TZ=Europe/Paris
-      - URL=gobie.fr
-      - SUBDOMAINS=wildcard
-      - VALIDATION=dns
-      - EMAIL=admin@gobie.fr
-    volumes:
-      - /disk/appdata/swag:/config    # Remplacer /disk par le moint de montage
-    ports:
-      - 10443:443
-      - 10080:80
-    networks:
-      - gobieIO
-    restart: unless-stopped
-```
+- Renseigner la variable d'environnement `${TANK}` pour le point de montage
+- Renseigner la variable d'environnement `${DOMAIN}`
+
+#### Configuration DNS 
+
+Cas du fournisseur OVH, dans le conteneur swag editer le fichier `config/dns-conf/ovh.ini`
+
+> Pour un fournisseur différent, il faut éditer et suivre les instructions du fichier correspondant et surcharger les variable d'environement utilisée dans .env.proxy
+
+- Pour généerer les clé API, se connecter a l'adresse suivante `https://eu.api.ovh.com/createToken/`. Cette page va fournir 3 clés. Il faut à remplacer les clés du fichiers `ovh.ini` par celle fourni par l'API.
+  .. ``GET /domain/zone/*``
+* ``PUT /domain/zone/*``
+* ``POST /domain/zone/*``
+* ``DELETE /domain/zone/*``
+
 
 ## Cloud
 
