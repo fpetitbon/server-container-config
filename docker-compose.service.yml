@@ -44,7 +44,7 @@ services:
     volumes:
       - ${TANK}/appdata/duplicati:/config
       - ${TANK}:/source
-      - :/backups
-    ports:
+      - ./:/backups
+    expose:
       - 8200
 
