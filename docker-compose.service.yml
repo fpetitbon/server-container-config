@@ -1,13 +1,10 @@
-version: "3.9"
-services:
+version: "3.8"
 
-  # Mainboard
-  heimdall:
-    image: ghcr.io/linuxserver/heimdall
-    container_name: heimdall
-    restart: unless-stopped
-    volumes:
-      - ${TANK}/appdata/heimdall:/config
+networks:
+  front:
+    name: proxy
+
+services:
 
   # Reverse proxy
   swag:
@@ -17,13 +14,16 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - URL=${HOSTNAME}
+      - URL=${DOMAIN}
     volumes:
       - ${TANK}/appdata/swag:/config
     ports:
       - 10443:443
-      - 10080:80
-
-networks:
-  front:
-    name: proxy
+      
+  # Mainboard
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall
+    container_name: heimdall
+    restart: unless-stopped
+    volumes:
+      - ${TANK}/appdata/heimdall:/config
