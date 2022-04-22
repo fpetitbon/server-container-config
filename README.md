@@ -186,9 +186,7 @@ TZ=Europe/Paris
 
 ## Services
 
-### Swag
-
-Reverse Proxy
+### Reverse Proxy, Swag
 
 Creation pour tous les sous domaines (wildcard)
 
@@ -201,12 +199,15 @@ Cas du fournisseur OVH, dans le conteneur swag editer le fichier `config/dns-con
 
 > Pour un fournisseur différent, il faut éditer et suivre les instructions du fichier correspondant et surcharger les variable d'environement utilisée dans .env.proxy
 
-- Pour généerer les clé API, se connecter a l'adresse suivante `https://eu.api.ovh.com/createToken/`. Cette page va fournir 3 clés. Il faut à remplacer les clés du fichiers `ovh.ini` par celle fourni par l'API.
-  .. ``GET /domain/zone/*``
-* ``PUT /domain/zone/*``
-* ``POST /domain/zone/*``
-* ``DELETE /domain/zone/*``
-
+- Pour généerer les clé API, se connecter a l'adresse suivante `https://eu.api.ovh.com/createToken/`. Cette page va fournir 3 clés. Il faut à remplacer les clés du fichiers `ovh.ini` par celle fourni par l'API. Indiquer les information suivantes
+  - Renseignez l'identifiant client, le mot de passe et un nom de d'application.
+  - Script name `swag`
+  - Script description `rproxy`
+  - Validity `Unlinimied`
+  - Rights `GET /domain/zone/*`
+  - Rights `PUT /domain/zone/*`
+  - Rights `POST /domain/zone/*`
+  - Rights `DELETE /domain/zone/*`
 
 ## Cloud
 
