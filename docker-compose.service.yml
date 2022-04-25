@@ -25,7 +25,15 @@ services:
       - front
     ports:
       - 10443:443
-      
+  
+  # Authentication and authorization    
+  authelia:
+    image: ghcr.io/authelia/authelia:latest
+    container_name: authelia
+    restart: unless-stopped
+    volumes:
+      -  ${TANK}/appdata/authelia:/config
+     
   # Mainboard
   heimdall:
     image: ghcr.io/linuxserver/heimdall
@@ -44,7 +52,6 @@ services:
     volumes:
       - ${TANK}/appdata/duplicati:/config
       - ${TANK}:/source
-      - ./:/backups
-    ports:
-      - 8200:8200
+    expose:
+      - 8200
 
