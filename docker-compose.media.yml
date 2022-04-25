@@ -47,10 +47,7 @@ services:
       - deluge
     env_file:
       - .env.base
-    environment:
-      - UMASK=002
-      - PUID=0
-      - PGID=0
+    user: "${PUID}:${PGID}"
     volumes:
       - ${TANK}/appdata/sonarr:/config
       - ${TANK}/media/videos/series:/data/series
