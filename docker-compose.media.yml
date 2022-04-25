@@ -19,7 +19,7 @@ services:
       - ${TANK}/media:/data/media
     networks:
       - front
-    # ports:
+    # expose:
     # - 8096:8096
   
   # Torrent downloader
@@ -51,8 +51,8 @@ services:
       - ${TANK}/download:/data/download
     networks:
       - front
-    # ports:
-    #  - 8989:8989
+    expose:
+      - 8989
  
   radarr:
     image: lscr.io/linuxserver/radarr
