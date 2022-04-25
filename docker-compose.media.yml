@@ -45,6 +45,8 @@ services:
     restart: unless-stopped
     depends_on:
       - deluge
+    env_file:
+      - .env.base
     volumes:
       - ${TANK}/appdata/sonarr:/config
       - ${TANK}/media/videos/series:/data/series
