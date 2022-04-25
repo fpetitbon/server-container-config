@@ -1,14 +1,19 @@
-version: "3.9"
+version: "3.8"
+
+networks:
+  front:
+    external:
+      name: proxy
+
 services:
 
+  # Streaming
   jellyfin:
     image: lscr.io/linuxserver/jellyfin
     container_name: jellyfin
     restart: unless-stopped 
     devices:
       - /dev/vchiq:/dev/vchiq
-    environment:
-      # - JELLYFIN_PublishedServerUrl=192.168.0.101 #optional
     volumes:
       - ${TANK}/appdata/jellyfin:/config
       - ${TANK}/media:/data/media
@@ -17,6 +22,7 @@ services:
     # ports:
     # - 8096:8096
   
+  # Torrent downloader
   deluge:
     image: lscr.io/linuxserver/deluge
     container_name: deluge
@@ -89,7 +95,3 @@ services:
     # ports:
     #  - 9117:9117
     
-networks:
-  front:
-    external:
-      name: proxy
