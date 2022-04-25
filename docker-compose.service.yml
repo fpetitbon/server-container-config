@@ -31,8 +31,12 @@ services:
     image: ghcr.io/authelia/authelia:latest
     container_name: authelia
     restart: unless-stopped
+    env_file:
+      - .env.base
     volumes:
-      -  ${TANK}/appdata/authelia:/config
+      - ${TANK}/appdata/authelia:/config
+    ports:
+      - 9091:9091/tcp
      
   # Mainboard
   heimdall:
@@ -52,6 +56,6 @@ services:
     volumes:
       - ${TANK}/appdata/duplicati:/config
       - ${TANK}:/source
-    expose:
-      - 8200
+    ports:
+      - 8200:8200
 
