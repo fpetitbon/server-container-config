@@ -24,7 +24,7 @@ services:
       - /dev/vchiq:/dev/vchiq
     volumes:
       - ${TANK}/appdata/jellyfin:/config
-      - media:/data/media
+      - ${TANK}/media:/data/media
     networks:
       - front
     # expose:
@@ -41,7 +41,7 @@ services:
       - DELUGE_LOGLEVEL=error
     volumes:
       - ${TANK}/appdata/deluge:/config
-      - download:/data/download
+      - ${TANK}/download:/data/download
     networks:
       - front
     ports:
