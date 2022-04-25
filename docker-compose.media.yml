@@ -48,7 +48,7 @@ services:
     env_file:
       - .env.base
     environment:
-      - UMASK=022
+      - UMASK=027
       #- PUID=0
       #- PGID=0
     volumes:
