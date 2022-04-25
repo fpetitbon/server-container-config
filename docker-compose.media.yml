@@ -47,6 +47,9 @@ services:
       - deluge
     env_file:
       - .env.base
+    environment:
+      - PUID=0
+      - PGID=0
     volumes:
       - ${TANK}/appdata/sonarr:/config
       - ${TANK}/media/videos/series:/data/series
