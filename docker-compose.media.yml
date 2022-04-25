@@ -4,7 +4,13 @@ networks:
   front:
     external:
       name: proxy
-
+      
+volumes:
+  media:
+    name: ${TANK}/media
+  download:
+    name: ${TANK}/download
+      
 services:
 
   # Streaming
@@ -16,7 +22,7 @@ services:
       - /dev/vchiq:/dev/vchiq
     volumes:
       - ${TANK}/appdata/jellyfin:/config
-      - ${TANK}/media:/data/media
+      - media:/data/media
     networks:
       - front
     # expose:
@@ -31,7 +37,7 @@ services:
       - DELUGE_LOGLEVEL=error
     volumes:
       - ${TANK}/appdata/deluge:/config
-      - ${TANK}/download:/data/download
+      - download:/data/download
     networks:
       - front
     ports:
