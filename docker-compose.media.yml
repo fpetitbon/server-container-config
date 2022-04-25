@@ -17,7 +17,9 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin
     container_name: jellyfin
-    restart: unless-stopped 
+    restart: unless-stopped
+    env_file:
+      - .env.base
     devices:
       - /dev/vchiq:/dev/vchiq
     volumes:
@@ -33,6 +35,8 @@ services:
     image: lscr.io/linuxserver/deluge
     container_name: deluge
     restart: unless-stopped 
+    env_file:
+      - .env.base
     environment:
       - DELUGE_LOGLEVEL=error
     volumes:
