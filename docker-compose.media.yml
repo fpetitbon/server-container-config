@@ -51,8 +51,8 @@ services:
       - ${TANK}/download:/data/download
     networks:
       - front
-    expose:
-      - 8989
+    ports:
+      - 8989:8989
  
   radarr:
     image: lscr.io/linuxserver/radarr
