@@ -24,7 +24,7 @@ services:
       - .env.base
       - .env.cloud
     environment:
-      - REDIS_HOST=nextcloud-redis
+      - REDIS_HOST=nextcloud-cache
     volumes:
       - ${TANK}/appdata/nextcloud/config:/config
       - cloud:/data
