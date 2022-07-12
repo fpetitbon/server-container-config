@@ -4,6 +4,8 @@ networks:
   front:
     external:
       name: proxy
+  vpn:
+    driver: bridge
       
 volumes:
   media:
@@ -35,6 +37,8 @@ services:
     image: lscr.io/linuxserver/deluge
     container_name: deluge
     restart: unless-stopped 
+    depends_on:
+      - vpn
     env_file:
       - .env.base
     environment:
@@ -44,11 +48,30 @@ services:
       - ${TANK}/download:/data/download
     networks:
       - front
+      - vpn
     ports:
     #  - 8112:8112
       - 6881:6881
       - 6881:6881/udp
-    
+      
+  vpn:
+    image: qmcgaw/gluetun
+    container_name: vpn
+    restart: unless-stopped
+    cap_add:
+      - net_admin # required to modify network interfaces
+    volumes:
+      - /root/vpn:/gluetun # OpenVPN configuration
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=cyberghost
+      - OPENVPN_USER=${OPENVPN_USER}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
+      - SERVER_COUNTRIES=France
+    networks:
+      - vpn
+      
   sonarr:
     image: lscr.io/linuxserver/sonarr
     container_name: sonarr
@@ -64,6 +87,7 @@ services:
       - ${TANK}/download:/data/download
     networks:
       - front
+      - vpn
     ports:
       - 8989:8989
  
@@ -77,6 +101,9 @@ services:
       - ${TANK}/appdata/radarr:/config
       - ${TANK}/media/videos/films:/data/films
       - ${TANK}/download:/data/download
+    networks:
+      - front
+      - vpn
     #ports:
     #  - 7878:7878
   
@@ -92,6 +119,7 @@ services:
       - ${TANK}/download:/data/download
     networks:
       - front
+      - vpn
     #ports:
     #  - 8686:8686
 
