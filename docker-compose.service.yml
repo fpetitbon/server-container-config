@@ -28,7 +28,7 @@ services:
   
   # Authentication and authorization    
   authelia:
-    image: ghcr.io/authelia/authelia:latest
+    image: authelia/authelia
     container_name: authelia
     restart: unless-stopped
     env_file:
