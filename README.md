@@ -98,7 +98,7 @@ OpenMediavault (OMV) est une solution de stockage en réseau (NAS) basée sur De
     passwor: openmediavault
     ```
 
-> Si la connexion est possible, c'est que OMV est installé correctement et qu'il est possible de ce connecter à la machine en SSH. Dans le cas d'unne réinstallation l'on réinstalle OMV, pour etablir une nouvelle connexion SSH, il faut changer les clefs SSH  `ssh-keygen -R @adresse`.
+> Si la connexion est possible, c'est que OMV est installé correctement et qu'il est possible de ce connecter à la machine en SSH. Dans le cas d'une réinstallation l'on réinstalle OMV, pour etablir une nouvelle connexion SSH, il faut changer les clefs SSH  `ssh-keygen -R @adresse`.
 
 ## Configuration et réglage de base
 
