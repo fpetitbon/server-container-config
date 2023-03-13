@@ -2,7 +2,7 @@
 
 Le systeme est un raspberry PI 4  
 
-## Raspberry Pi OS Lite
+## Raspberry Pi OS Lite (64 bit)
 
 - Télécharger l'image depuis: https://www.raspberrypi.org/software/
 - Enregistrer l'image sur une carte SD puis démarer le raspberry.
