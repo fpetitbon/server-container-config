@@ -11,7 +11,7 @@ Le systeme est un raspberry PI 4
 
 ```
 login: pi
-passwor: raspberry
+password: raspberry
 ```
 
 ## Configuration du raspberry
